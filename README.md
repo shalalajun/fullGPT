@@ -1,0 +1,1 @@
+source env/bin/activate 실행해서 환경을 바꿔야 한다.
