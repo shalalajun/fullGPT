@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atropos Chatbot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
 </head>
 <body>
-    <div id="chat-container">
+    <div class="container">
+        <div class="header">
+            <h1>AUXO</h1>
+            <p>안녕 나의 은빛의 기사님</p>
+        </div>
         <div id="chatbox"></div>
         <div id="input-container">
-            <input type="file" id="file-upload" accept=".pdf,.txt,.docx">
-            <button onclick="uploadFile()">Upload</button>
-            <input type="text" id="user-input" placeholder="Type your message here...">
+            <input type="text" id="user-input" placeholder="무엇을 도와드릴까요?">
             <button onclick="sendMessage()">Send</button>
+            <label class="upload-label">
+                <input type="file" id="file-upload" accept=".pdf,.txt,.docx">
+                <button class="upload" type="button" onclick="triggerFileUpload()">Upload</button>
+            </label>
         </div>
     </div>
 
@@ -48,7 +57,11 @@
             chatbox.scrollTop = chatbox.scrollHeight;
         }
 
-        function uploadFile() {
+        function triggerFileUpload() {
+            document.getElementById('file-upload').click();
+        }
+
+        document.getElementById('file-upload').addEventListener('change', function() {
             const fileInput = document.getElementById('file-upload');
             const file = fileInput.files[0];
             const formData = new FormData();
@@ -66,7 +79,7 @@
                     alert('파일 업로드에 실패했습니다.');
                 }
             });
-        }
+        });
     </script>
 </body>
 </html>

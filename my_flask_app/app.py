@@ -32,7 +32,7 @@ class ChaCallbackHandler(BaseCallbackHandler):
 
 llm = ChatOpenAI(
     model_name="gpt-4",
-    temperature=0.9,
+    temperature=0.5,
     streaming=True,
     callbacks=[
         ChaCallbackHandler(),
